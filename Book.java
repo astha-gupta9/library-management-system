@@ -1,8 +1,8 @@
 package librarymanagementsystem;
 
+import librarymanagementsystem.BookRepository;
 import librarymanagementsystem.Student;
-import librarymanagementsystem.Students;
-import librarymanagementsystem.Books;
+import librarymanagementsystem.StudentRepository;
 import librarymanagementsystem.Library;
 
 public class Book {
@@ -62,19 +62,14 @@ public class Book {
 
     @java.lang.Override
     public java.lang.String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", totalQuantity=" + totalQuantity +
-                ", available=" + available +
-                '}';
+        String avail = isAvailable() ? "Available" : "Not Available";
+        return "ID: " + getId() + " | Title: " + getTitle() + " | Author: " + getAuthor() + " | Availability: " + avail;
     }
 
     public boolean isAvailable() {
         if (getAvailable() > 0) return true;
 
-        System.out.println("Book is out of stock!");
+//        System.out.println("Book is out of stock!");
         return false;
     }
 

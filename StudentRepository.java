@@ -2,11 +2,11 @@ package librarymanagementsystem;
 
 import java.util.*;
 import librarymanagementsystem.Student;
-import librarymanagementsystem.Books;
 import librarymanagementsystem.Book;
+import librarymanagementsystem.BookRepository;
 import librarymanagementsystem.Library;
 
-public class Students {
+public class StudentRepository {
     private static Map<Integer, Student> studentMap = new HashMap<>();
 
     public boolean registerStudent(Student s) {
@@ -31,23 +31,5 @@ public class Students {
 
     public List<Student> getAllStudents() {
         return new ArrayList<Student>(studentMap.values());
-    }
-
-    public boolean issueBookToStudent(int studId, int bookId, Books books) {
-        Student s = findById(studId);
-        Book b = books.findById(bookId);
-
-        if (s == null || b == null) return false;
-
-        return s.addIssuedBook(bookId, books);
-    }
-
-    public boolean returnBookFromStudent(int studId, int bookId, Books books) {
-        Student s = findById(studId);
-        Book b = books.findById(bookId);
-
-        if (s == null || b == null) return false;
-
-        return s.removeIssuedBook(bookId, books);
     }
 }

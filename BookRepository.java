@@ -2,11 +2,11 @@ package librarymanagementsystem;
 
 import java.util.*;
 import librarymanagementsystem.Student;
-import librarymanagementsystem.Students;
+import librarymanagementsystem.StudentRepository;
 import librarymanagementsystem.Book;
 import librarymanagementsystem.Library;
 
-public class Books {
+public class BookRepository {
     private static Map<Integer, Book> books = new HashMap<Integer, Book>();
 
     public boolean addBook(Book b) {
@@ -32,6 +32,7 @@ public class Books {
         b.setTotalQuantity(b.getTotalQuantity() + extra);
         b.setAvailable(b.getAvailable() + extra);
         System.out.println("Quantity upgraded successfully!");
+        System.out.println(b.toString());
         return true;
     }
 
@@ -40,7 +41,7 @@ public class Books {
             return books.get(bookId);
         }
 
-        System.out.println("Book does not exist!");
+        System.out.println("Book isn't present in the library!");
         return null;
     }
 
@@ -73,25 +74,14 @@ public class Books {
     }
 
     public boolean issueBook(int bookId) {
-        Book b = findById(bookId);
-
-        if (b == null || !b.isAvailable()) return false;
-
-        b.decrementAvailable();
-        System.out.println("Book availability decremented!");
+        findById(bookId).decrementAvailable();
+        System.out.println("Book issued successfully!");
         return true;
     }
 
     public boolean returnBook(int bookId) {
-        Book b = findById(bookId);
-
-        if (b.getAvailable() == b.getTotalQuantity()) {
-            System.out.println("Book isn't from the library.");
-            return false;
-        }
-
-        b.incrementAvailable();
-        System.out.println("Book availability incremented!");
+        findById(bookId).incrementAvailable();
+        System.out.println("Book returned successfully!");
         return true;
     }
 }

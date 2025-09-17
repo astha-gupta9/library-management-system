@@ -2,8 +2,8 @@ package librarymanagementsystem;
 
 import java.util.*;
 import librarymanagementsystem.Book;
-import librarymanagementsystem.Books;
-import librarymanagementsystem.Students;
+import librarymanagementsystem.BookRepository;
+import librarymanagementsystem.StudentRepository;
 import librarymanagementsystem.Library;
 
 public class Student {
@@ -45,41 +45,16 @@ public class Student {
         return true;
     }
 
-    public boolean addIssuedBook(int bookId, Books books) {
-        if (getIssuedBookIds().contains(bookId)) {
-            System.out.println("Book already issued!");
-            return false;
-        }
-
-        if (!canIssueMore() || !books.issueBook(bookId)) {
-            System.out.println("Book can't be issued!");
-            return false;
-        }
-
-        getIssuedBookIds().add(bookId);
-        System.out.println("Book issued sucessfully!");
-        return true;
+    public boolean addIssuedBook(int bookId, BookRepository bookRepo) {
+        return getIssuedBookIds().add(bookId);
     }
 
-    public boolean removeIssuedBook(int bookId, Books books) {
-        if (!getIssuedBookIds().contains(bookId)) {
-            System.out.println(getName() + " didn't issued this book!");
-            return false;
-        }
-
-        if (!books.returnBook(bookId)) return false;
-
-        getIssuedBookIds().remove(bookId);
-        System.out.println("Book removed successfully!");
-        return true;
+    public boolean removeIssuedBook(int bookId, BookRepository bookRepo) {
+        return getIssuedBookIds().remove(bookId);
     }
 
     @java.lang.Override
     public java.lang.String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", issuedBookIds=" + issuedBookIds +
-                '}';
+        return "ID: " + getId() + " | Name: " + getName() + " | Total Books assigned : " + getIssuedBookIds().size();
     }
 }
