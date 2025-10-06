@@ -1,8 +1,7 @@
 # Library Management System (Java - Console Based)
 
 [![Java](https://img.shields.io/badge/Java-8%2B-blue)](https://www.oracle.com/java/)
-[![Build](https://img.shields.io/badge/build-passing-brightgreen)](#)
-[![License](https://img.shields.io/badge/license-MIT-lightgrey)](#)
+[![License](https://img.shields.io/badge/license-MIT-yellow)](#)
 
 A simple **console-based Library Management System** built in Java.
 This project demonstrates the use of:
