@@ -1,4 +1,4 @@
-### ⚠️ This is a learning project built while practicing OOPs concepts using Java.
+### ⚠️ This is a learning project built while practicing OOPs Concepts using Java.
 
 # Library Management System (Java - Console Based)
 
